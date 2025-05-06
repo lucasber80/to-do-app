@@ -1,0 +1,29 @@
+.primary-button,
+.secondary-button,
+.outline-button {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  color: white;
+  border: none;
+  padding: 9px 11px;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.primary-button {
+  background-color: #28262f;
+}
+
+.secondary-button {
+  background-color: #be1a23;
+}
+
+.outline-button {
+  background-color: white;
+  color: #28262f !important;
+  border: 1px solid #28262f !important;
+}

@@ -1,0 +1,129 @@
+.input-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-basic {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+
+  label {
+    color: #424242;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .icon-div {
+    width: 28px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    height: 28px;
+    right: 2px;
+    top: 4px;
+    background-color: transparent;
+
+    img {
+      width: 16px;
+    }
+
+    i {
+      font-size: 15px;
+      color: #757575;
+    }
+  }
+
+  input,
+  textarea {
+    padding: 6px 34px 6px 12px;
+  }
+
+  select {
+    padding: 0 0 0 10px;
+  }
+
+  textarea {
+    box-sizing: border-box;
+    resize: none;
+    height: 100%;
+  }
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #757575;
+    font-size: 14px;
+    border: 1px solid #aaaaaa;
+  }
+
+  input,
+  select {
+    height: 38px;
+  }
+
+  input:hover,
+  input:active,
+  input:focus,
+  select:hover,
+  select:active,
+  select:focus,
+  .div-editor:hover,
+  textarea:hover,
+  textarea:active,
+  textarea:focus {
+    background-color: #f7f7f7;
+    outline: none;
+    border-radius: 4px;
+  }
+}
+
+.input-basic:hover {
+  .icon-div {
+    background-color: #f7f7f7 !important;
+  }
+}
+
+.input-row {
+  display: flex;
+  gap: 20px;
+}
+
+.invalid-input {
+  input,
+  .editor-div,
+  select,
+  textArea {
+    border: 1px solid red !important;
+  }
+}
+
+.error-icon {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: red;
+}
+
+.system-input-text-error {
+  color: red;
+  font-size: 10px;
+  position: absolute;
+  bottom: -15px;
+}
+
+@media screen and (max-width: 768px) {
+  .input-row {
+    flex-direction: column;
+  }
+
+  .input-basic {
+    max-width: 100% !important;
+  }
+}

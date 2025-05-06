@@ -26,5 +26,5 @@ export async function loginUserService(
     expiresIn: "2h",
   });
 
-  return { token };
+  return { user: user, token: token };
 }

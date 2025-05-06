@@ -1,0 +1,60 @@
+<div class="login-content">
+  <img src="./assets/imgs/background/bg.png" class="background-img" />
+
+  <div class="login-body">
+    <img src="./assets/imgs/logos/logo.svg" class="login-logo" />
+
+    <form [formGroup]="create_user_form">
+      <div
+        class="input-basic"
+        [ngClass]="{
+          'invalid-input': isInvalidField('name')
+        }"
+      >
+        <label>Nome completo</label>
+        <input type="text" placeholder="Digite aqui" formControlName="name" />
+
+        <div *ngIf="isInvalidField('name')" class="system-input-text-error">
+          <span *ngIf="create_user_form.get('name')?.errors?.['required']">
+            Campo obrigatório.
+          </span>
+        </div>
+      </div>
+      <div
+        class="input-basic"
+        [ngClass]="{
+          'invalid-input': isInvalidField('email')
+        }"
+      >
+        <label>E-mail</label>
+        <input type="text" placeholder="Digite aqui" formControlName="email" />
+
+        <div *ngIf="isInvalidField('email')" class="system-input-text-error">
+          <span *ngIf="create_user_form.get('email')?.errors?.['required']">
+            Campo obrigatório.
+          </span>
+          <span *ngIf="create_user_form.get('email')?.errors?.['email']">
+            E-mail inválido.
+          </span>
+        </div>
+      </div>
+      <div
+        class="input-basic"
+        [ngClass]="{
+          'invalid-input': isInvalidField('password')
+        }"
+      >
+        <label>Senha</label>
+        <input placeholder="Senha" formControlName="password" type="password"/>
+        <div *ngIf="isInvalidField('password')" class="system-input-text-error">
+          <span *ngIf="create_user_form.get('password')?.errors?.['required']">
+            Campo obrigatório.
+          </span>
+        </div>
+      </div>
+
+      <button class="primary-button" (click)="createUser()">Cadastrar</button>
+      <a class="chamada" [routerLink]="['/login']"> Login </a>
+    </form>
+  </div>
+</div>
