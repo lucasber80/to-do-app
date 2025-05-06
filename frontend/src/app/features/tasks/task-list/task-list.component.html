@@ -1,0 +1,17 @@
+<div class="title">Minhas tarefas</div>
+
+<div class="header">
+  <div>Em andamento</div>
+  <div class="icon" (click)="abrirFormularioDialog()">
+    <i class="pi pi-plus"></i>
+  </div>
+</div>
+<div class="task-scroll">
+  @for (task of tasks; track $index) { @if (!task.done) {
+  <app-task
+    [taskInput]="task"
+    (taskEditada)="onTaskEdit($event)"
+    (taskConcluida)="onTaskConcluida($event)"
+  ></app-task>
+  } }
+</div>

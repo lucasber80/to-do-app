@@ -14,6 +14,14 @@ export async function listPendingTasksService(userId: number) {
   return await taskRepo.findPendingByUserId(userId);
 }
 
+export async function editTaskService(
+  userId: number,
+  taskId: number,
+  data: CreateTaskDTO
+) {
+  return await taskRepo.edit(userId, taskId, data);
+}
+
 export async function completeTaskService(userId: number, taskId: number) {
   return await taskRepo.completeTask(userId, taskId);
 }

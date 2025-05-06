@@ -10,17 +10,11 @@ datasource db {
 model Task {
   id         Int      @id @default(autoincrement())
   description String
-  priority   Priority
+  priority   String
   done       Boolean  @default(false)
   createdAt  DateTime @default(now())
   userId     Int
   user       User     @relation(fields: [userId], references: [id])
-}
-
-enum Priority {
-  ALTA
-  MEDIA
-  BAIXA
 }
 
 model User {

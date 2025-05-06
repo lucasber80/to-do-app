@@ -1,0 +1,12 @@
+<div class="user-section">
+  <div class="user-infos">
+    <div class="user-logo">{{ getInitials(usuarioLogado?.name ?? "") }}</div>
+    <div class="user-text">
+      <div class="user-text-title">
+        {{ getPrimeiroUltimoNomeFormatado(usuarioLogado?.name ?? "") }}
+      </div>
+      <div class="user-text-subtitle">User</div>
+    </div>
+  </div>
+  <i class="pi pi-sign-out icon" (click)="deslogar()"></i>
+</div>

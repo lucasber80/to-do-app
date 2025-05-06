@@ -1,0 +1,18 @@
+<div class="menu-body" [ngClass]="isSideBar ? 'menu-side-bar' : ''">
+  <button class="logo-menu" [routerLink]="['']">
+    <img src="assets/imgs/logos/logo.svg" />
+  </button>
+  <div class="menu-list-buttons">
+    <div class="menu-title">TAREFAS</div>
+
+    <button
+      class="button-menu"
+      [routerLink]="['']"
+      [ngClass]="{ 'button-menu-clicado': isActive('/') }"
+    >
+      <i class="pi pi-file-check"></i>
+      <div class="button-title">Minhas tarefas</div>
+    </button>
+  </div>
+  <app-user-section style="margin-top: auto"></app-user-section>
+</div>

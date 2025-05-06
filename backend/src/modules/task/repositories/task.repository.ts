@@ -15,6 +15,28 @@ export class TaskRepository {
     });
   }
 
+  async edit(
+    userId: number,
+    taskId: number,
+    data: { description: string; priority: "ALTA" | "MEDIA" | "BAIXA" }
+  ) {
+    const task = await prisma.task.findFirst({
+      where: {
+        id: taskId,
+        userId,
+      },
+    });
+
+    if (!task) {
+      throw new Error("Tarefa não encontrada ou não pertence ao usuário");
+    }
+
+    return prisma.task.update({
+      where: { id: taskId },
+      data,
+    });
+  }
+
   async findPendingByUserId(userId: number) {
     return prisma.task.findMany({
       where: {

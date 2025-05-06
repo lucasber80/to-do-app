@@ -1,0 +1,34 @@
+<form [formGroup]="task_form">
+  <div class="input-basic">
+    <label>Prioridade</label>
+    <select formControlName="priority">
+      <option value="" selected>Selecione uma prioridade</option>
+      <option value="BAIXA">BAIXA</option>
+      <option value="MEDIA">MÉDIA</option>
+      <option value="ALTA">ALTA</option>
+    </select>
+  </div>
+  <div
+    class="input-basic"
+    [ngClass]="{
+      'invalid-input': isInvalidField('description')
+    }"
+  >
+    <label>Descrição *</label>
+
+    <textarea
+      type="text"
+      placeholder="Digite aqui..."
+      formControlName="description"
+    ></textarea>
+
+    <div *ngIf="isInvalidField('description')" class="system-input-text-error">
+      Campo obrigatório.
+    </div>
+  </div>
+
+  <div class="button-row">
+    <button class="outline-button" (click)="cancelar()">Cancelar</button>
+    <button class="primary-button" (click)="salvar()">Salvar</button>
+  </div>
+</form>

@@ -1,0 +1,6 @@
+<app-task-form
+  (taskCriada)="onCreate($event)"
+  (taskEditada)="onEdit($event)"
+  [taskParaEditar]="taskParaEditar"
+  (formCancel)="sair()"
+></app-task-form>

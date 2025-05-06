@@ -1,44 +1,50 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
-export const TOKEN_KEY = 'auth-token';
+
+const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
+
 @Injectable({
   providedIn: 'root',
 })
 export class TokenStorageService {
   constructor(private router: Router) {}
 
-  public signOut(): void {
-    this.router.navigate(['/login']);
-    localStorage.clear();
-  }
-
-  public saveToken(token: any): void {
+  signOut(): void {
     localStorage.removeItem(TOKEN_KEY);
-    localStorage.setItem(TOKEN_KEY, JSON.stringify(token));
-  }
-
-  public getToken(): any {
-    let token = localStorage.getItem(TOKEN_KEY);
-    if (token) return JSON.parse(token);
-    return null;
-  }
-
-  public saveUser(user: any): void {
     localStorage.removeItem(USER_KEY);
+    this.router.navigate(['/login']);
+  }
+
+  saveToken(token: string): void {
+    localStorage.setItem(TOKEN_KEY, token);
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem(TOKEN_KEY);
+  }
+
+  saveUser(user: User): void {
     localStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
-  public getUser(): User | null {
-    const user = localStorage.getItem(USER_KEY);
-
-    return user ? JSON.parse(user) : null;
+  getUser(): User | null {
+    const raw = localStorage.getItem(USER_KEY);
+    try {
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
   }
 
-  public exist(key: string): boolean {
-    return !(
-      localStorage.getItem(key) === null || localStorage.getItem(key) === ''
-    );
+  has(key: string): boolean {
+    const value = localStorage.getItem(key);
+    return value !== null && value.trim() !== '';
+  }
+
+  clear(): void {
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(USER_KEY);
   }
 }

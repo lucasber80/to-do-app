@@ -1,0 +1,15 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: end;
+  gap: 30px;
+}
+
+textarea {
+  height: 200px;
+}

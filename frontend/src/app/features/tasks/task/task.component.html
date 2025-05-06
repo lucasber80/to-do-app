@@ -1,0 +1,26 @@
+@if (task) {
+<div class="task-row">
+  <button class="button-check" (click)="completeTask()">
+    <i class="pi pi-check"></i>
+  </button>
+  <div class="task-body">
+    <div
+      class="task-description"
+      [ngClass]="{
+        'priority-alta': task.priority === 'ALTA',
+        'priority-media': task.priority === 'MEDIA',
+        'priority-baixa': task.priority === 'BAIXA'
+      }"
+    >
+      {{ task.description }}
+    </div>
+    <div class="task-date">
+      <i class="pi pi-calendar"></i>
+      {{ task.createdAt | date : "MMM d" : undefined : "pt-BR" }}
+    </div>
+  </div>
+  <button class="button-edit" (click)="abrirFormularioEdicaoDialog()">
+    <i class="pi pi-pencil"></i>
+  </button>
+</div>
+}

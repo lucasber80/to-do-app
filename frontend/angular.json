@@ -28,9 +28,7 @@
             "styles": [
               "src/styles/styles.scss",
               "src/styles/inputs.scss",
-              "src/styles/buttons.scss",
-              "src/styles/login.scss",
-              "src/styles/dialog.scss"
+              "src/styles/buttons.scss"
             ],
             "scripts": []
           },

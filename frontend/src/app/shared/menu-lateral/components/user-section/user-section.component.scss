@@ -1,0 +1,44 @@
+.user-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-top: 1px solid #e5eaef;
+  padding: 20px;
+
+  i {
+    color: #6a6d7d;
+  }
+}
+
+.user-infos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  color: white;
+  background-color: #008000;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.user-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+
+  .user-text-title {
+    font-weight: bold;
+  }
+
+  .user-text-subtitle {
+    color: #6a6d7d;
+  }
+}

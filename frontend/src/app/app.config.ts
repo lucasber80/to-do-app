@@ -1,4 +1,8 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  provideZoneChangeDetection,
+  LOCALE_ID,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -9,9 +13,15 @@ import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { catchUnauthorizedErrorInterceptor } from './core/interceptors/catch-unauthorized-error.interceptor';
 import { completeUrlInterceptor } from './core/interceptors/complete-url.interceptor';
 import { MessageService } from 'primeng/api';
+import { DialogService } from 'primeng/dynamicdialog';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
+registerLocaleData(localePt);
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideAnimationsAsync(),
@@ -33,5 +43,6 @@ export const appConfig: ApplicationConfig = {
       ])
     ),
     MessageService,
+    DialogService,
   ],
 };

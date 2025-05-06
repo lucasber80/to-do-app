@@ -1,13 +1,25 @@
 import {
-    completeTaskService,
+  completeTaskService,
   createTaskService,
   listPendingTasksService,
+  editTaskService,
 } from "../services/task.service";
 
 export const createTaskController = async (req: any, res: any) => {
   try {
     const userId = req.userId;
     const task = await createTaskService(userId, req.body);
+    return res.status(201).json(task);
+  } catch (error: any) {
+    return res.status(400).json({ error: error.message });
+  }
+};
+
+export const editTaskController = async (req: any, res: any) => {
+  try {
+    const userId = req.userId;
+    const taskId = parseInt(req.params.id);
+    const task = await editTaskService(userId, taskId, req.body);
     return res.status(201).json(task);
   } catch (error: any) {
     return res.status(400).json({ error: error.message });
