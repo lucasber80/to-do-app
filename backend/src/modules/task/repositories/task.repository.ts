@@ -27,9 +27,8 @@ export class TaskRepository {
       },
     });
 
-    if (!task) {
+    if (!task)
       throw new Error("Tarefa não encontrada ou não pertence ao usuário");
-    }
 
     return prisma.task.update({
       where: { id: taskId },

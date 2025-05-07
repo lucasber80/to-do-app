@@ -5,26 +5,29 @@ import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET!;
 
-export async function loginUserService(
-  data: LoginDTO,
-  userRepo: UserRepository
-) {
-  const parsed = loginSchema.safeParse(data);
-  if (!parsed.success) throw new Error("Dados inválidos");
+export class AuthService {
+  constructor(private readonly userRepo: UserRepository) {}
 
-  const { email, password } = parsed.data;
+  async login(data: LoginDTO) {
+    const parsed = loginSchema.safeParse(data);
+    if (!parsed.success) throw new Error("Dados inválidos");
 
-  const user = await userRepo.findByEmail(email);
+    const { email, password } = parsed.data;
 
-  if (!user) throw new Error("E-mail ou senha incorretos");
+    const user = await this.userRepo.findByEmail(email);
+    if (!user) throw new Error("E-mail ou senha incorretos");
 
-  const passwordValid = await bcrypt.compare(password, user.password);
+    const passwordValid = await bcrypt.compare(password, user.password);
+    if (!passwordValid) throw new Error("E-mail ou senha incorretos");
 
-  if (!passwordValid) throw new Error("E-mail ou senha incorretos");
+    const token = jwt.sign({ userId: user.id }, JWT_SECRET, {
+      expiresIn: "2h",
+    });
 
-  const token = jwt.sign({ userId: user.id }, JWT_SECRET, {
-    expiresIn: "2h",
-  });
-
-  return { user: user, token: token };
+    return {
+      user,
+      token,
+      expiresAt: new Date(Date.now() + 2 * 60 * 60 * 1000), // 2h
+    };
+  }
 }

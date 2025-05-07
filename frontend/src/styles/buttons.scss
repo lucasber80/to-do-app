@@ -18,12 +18,20 @@
   background-color: #28262f;
 }
 
+.primary-button:hover {
+  background-color: #4c4954;
+}
+
 .secondary-button {
   background-color: #be1a23;
 }
 
 .outline-button {
   background-color: white;
-  color: #28262f !important;
-  border: 1px solid #28262f !important;
+  color: #28262f;
+  border: 1px solid #28262f;
+}
+
+.outline-button:hover {
+  background-color: #eae8f0;
 }

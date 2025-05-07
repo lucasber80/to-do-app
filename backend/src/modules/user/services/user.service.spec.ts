@@ -1,4 +1,4 @@
-import { createUserService } from "./user.service";
+import { UserService } from "./user.service";
 import bcrypt from "bcryptjs";
 
 jest.mock("bcryptjs");
@@ -11,6 +11,8 @@ describe("createUserService", () => {
     create: mockCreate,
     findByEmail: mockFindByEmail,
   };
+
+  const userService = new UserService(mockUserRepo);
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -26,14 +28,11 @@ describe("createUserService", () => {
     });
     (bcrypt.hash as jest.Mock).mockResolvedValue("senha-hash");
 
-    const user = await createUserService(
-      {
-        name: "João",
-        email: "joao@example.com",
-        password: "123456",
-      },
-      mockUserRepo
-    );
+    const user = await userService.create({
+      name: "João",
+      email: "joao@example.com",
+      password: "123456",
+    });
 
     expect(user).toHaveProperty("id");
     expect(mockCreate).toHaveBeenCalledWith({
@@ -53,14 +52,11 @@ describe("createUserService", () => {
     });
 
     await expect(() =>
-      createUserService(
-        {
-          name: "Outro Usuário",
-          email: "joao@example.com",
-          password: "abcdef",
-        },
-        mockUserRepo
-      )
+      userService.create({
+        name: "Outro Usuário",
+        email: "joao@example.com",
+        password: "abcdef",
+      })
     ).rejects.toThrow("E-mail já cadastrado");
   });
 });

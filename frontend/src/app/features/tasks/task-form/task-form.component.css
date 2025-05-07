@@ -8,6 +8,10 @@ form {
   display: flex;
   justify-content: end;
   gap: 30px;
+  margin-top: 10px;
+  button {
+    width: 100px;
+  }
 }
 
 textarea {

@@ -6,6 +6,7 @@
   <div class="task-body">
     <div
       class="task-description"
+      (click)="abrirFormularioEdicaoDialog()"
       [ngClass]="{
         'priority-alta': task.priority === 'ALTA',
         'priority-media': task.priority === 'MEDIA',

@@ -7,7 +7,7 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root',
 })
 export class AuthService {
-  apiUrl = 'users';
+  private apiUrl = 'users';
 
   constructor(
     private http: HttpClient,

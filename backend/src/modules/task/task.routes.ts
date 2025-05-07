@@ -5,7 +5,7 @@ import {
   editTaskController,
   listPendingTasksController,
 } from "./controllers/task.controller";
-import { authMiddleware } from "../../shared/middlewares/auth.middleware";
+import { authMiddleware } from "../../middlewares/auth.middleware";
 
 
 const router = Router();

@@ -7,7 +7,7 @@ import { User } from '../models/user';
   providedIn: 'root',
 })
 export class UserService {
-  apiUrl = 'users';
+  private apiUrl = 'users';
   constructor(private http: HttpClient) {}
 
   createUser(user: User): Observable<User> {

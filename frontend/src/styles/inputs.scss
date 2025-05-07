@@ -16,26 +16,6 @@
     font-weight: 500;
   }
 
-  .icon-div {
-    width: 28px;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    height: 28px;
-    right: 2px;
-    top: 4px;
-    background-color: transparent;
-
-    img {
-      width: 16px;
-    }
-
-    i {
-      font-size: 15px;
-      color: #757575;
-    }
-  }
-
   input,
   textarea {
     padding: 6px 34px 6px 12px;
@@ -89,11 +69,6 @@
   }
 }
 
-.input-row {
-  display: flex;
-  gap: 20px;
-}
-
 .invalid-input {
   input,
   .editor-div,
@@ -103,27 +78,9 @@
   }
 }
 
-.error-icon {
-  position: absolute;
-  right: 18px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: red;
-}
-
 .system-input-text-error {
   color: red;
   font-size: 10px;
   position: absolute;
   bottom: -15px;
-}
-
-@media screen and (max-width: 768px) {
-  .input-row {
-    flex-direction: column;
-  }
-
-  .input-basic {
-    max-width: 100% !important;
-  }
 }

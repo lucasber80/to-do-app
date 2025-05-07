@@ -7,11 +7,11 @@
   </div>
 </div>
 <div class="task-scroll">
-  @for (task of tasks; track $index) { @if (!task.done) {
+  @for (task of tasks; track $index) {
   <app-task
     [taskInput]="task"
     (taskEditada)="onTaskEdit($event)"
     (taskConcluida)="onTaskConcluida($event)"
   ></app-task>
-  } }
+  }
 </div>
